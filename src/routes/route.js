@@ -7,6 +7,131 @@ const mentorModule = require('../abc/xyz/myModule');
 const req = require('express/lib/request');
 const { route } = require('express/lib/application');
 
+/*---------------------------------- Problem -1 --------------------------------*/
+
+router.get("/movies", function(req, res){
+    const movies =[ "Bhaijaan","Dilwale","Chichhore","pushpa","K.G.F-2","Sultan"]  
+    res.send(`  ${movies}`)
+})
+
+/* ------------------------------Problem - 2 & -3  ----------------------------------*/
+
+     router.get("/movies/:indexNumber", function(req, res){
+     let value = req.params.indexNumber
+     let number = parseInt(value)
+     const movies = [ "Golmal Again","Dilwale","Chichhore","pushpa","K.G.F-2","Sultan","Holiday"]
+     let result ="Please Use Valid Index"
+    function findindex(){
+        for(let i = 0;i<movies.length;i++){
+            if(i === number){
+                result = movies[i]
+                return result
+            }
+
+        }
+        return result
+    }
+
+    res.send( findindex() )
+     
+})
+
+
+/* ------------------------------------ Problem no - 4 ---------------------------------- */
+
+router.get('/films', function(req, res){
+const arr = [
+    {
+        id: 1,
+        Name: "Rang De Basanti",
+         
+    },
+    {
+        id: 2,
+        Name: "Dilwale",
+         
+    },
+    {
+        id: 3,
+        Name: "Golmaal Return",
+         
+    },
+    {
+        id: 4,
+        Name: "Pushpa",
+         
+    },
+    {
+        id: 5,
+        Name :"Chhichore"
+        
+    },
+];
+let num = [...arr]
+res.send(num)
+ 
+})
+
+
+/*------------------------------- Problem - 5 --------------------------------------- */
+ 
+
+router.get('/films/:filmId', function(req, res){
+
+     let value = req.params.filmId
+     let num = parseInt(value)
+
+const arr = [
+    {
+        id: 1,
+        Name: "Sultaan",
+         
+    },
+    {
+        id: 2,
+        Name: "Dilwale",
+         
+    },
+    {
+        id: 3,
+        Name: "Golmaal Return",
+         
+    },
+    {
+        id: 4,
+        Name: "Pushpa",
+         
+    },
+    {
+        id: 5,
+        Name :"Chhichore"
+        
+    },
+];
+
+let result = "No movie exists with this id"
+function myfunction(){
+for(i =0; i<arr.length; i++ ){
+    const profile = arr[i]
+    if(profile.id === num)
+      {
+           result = profile.Name    
+           return result
+         
+     }    
+}
+      return result
+}
+     res.send( `The Movie Name Is =>  ${ myfunction() } ` )
+})
+
+/*----------------------------------------------------------------------------*/
+
+
+
+
+
+
 
 router.get("/profile-details", function(req, res){
     // Write the LOGIC here
