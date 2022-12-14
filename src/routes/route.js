@@ -1,6 +1,53 @@
 const express = require('express');
 const router = express.Router();
 
+
+ /* ------------------------------------- PROBLEM NO - 1 -------------------------*/
+
+ let persons= [
+    {
+    name: "PK",
+    age: 10,
+    votingStatus: false
+ },
+ {
+    name: "SK",
+    age: 20,
+    votingStatus: false
+ },
+ {
+    name: "AA",
+    age: 70,
+    votingStatus: false
+ },
+ {
+    name: "SC",
+    age: 5,
+    votingStatus: false
+ },
+ {
+    name: "HO",
+    age: 40,
+    votingStatus: false
+ }
+];
+
+router.post("/voting", function (req, res){  //valid = 20
+    let valid = req.query.valid;
+    let final =persons.filter((p)=>p.age > valid);
+
+    for (let i =0 ;i<final.length;i++){
+        final[i].votingStatus= true;
+    }
+     res.send(final);
+
+});
+
+/*-------------------------------------------------------------------------------------------*/
+
+
+
+
 router.get('/students/:name', function(req, res) {
     let studentName = req.params.name
     console.log(studentName)
@@ -147,16 +194,19 @@ router.post( "/post-query-1", function (req, res){
 
 //filter out all the numbers that are greater than "input" ( input is received from query params)
 let myArr = [23, 45, 67, 281394, 32424, 423, 24, 42323, 4, 234, 12, 34]
-
+ 
 router.post( "/post-query-2", function (req, res){
     let input= req.query.input
 
     // let finArr= myArr.filter ( ele => ele>input )
+
+    // res.send(finArr)
     let finalArr= []
     for( i=0 ; i<myArr.length ; i++){
         if ( myArr[i] > input )     finalArr.push( myArr[i])
     }
-    res.send( {data: finalArr , status: true})
+    res.send(finalArr)
+    //res.send( {data: finArr , status: true})
 })
 
 
