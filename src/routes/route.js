@@ -1,6 +1,77 @@
 const express = require('express');
 const router = express.Router();
 
+
+
+/*----------------------------------- problems - 1 -------------------------------------------*/
+
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       }
+   ]
+
+
+
+   router.post("/players", function(req, res) {
+    let name = req.body.name
+    let dob= req.body.dob
+    let gender= req.body.gender
+    let city= req.body.city
+    let sports= req.body.sports
+
+      
+
+     const newperson=players.find((p)=>p.name === name  )
+      if(newperson){
+        return res.send("person is Already  exist")
+      }else{
+        players.push({ name,dob,gender,city,sports})
+        return res.send(players) 
+      }
+       
+
+         
+  console.log(players)
+   
+
+
+   
+    res.send(  { data: players , status: true } )
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.get('/students/:name', function(req, res) {
     let studentName = req.params.name
     console.log(studentName)
@@ -51,10 +122,10 @@ router.post("/test-post-2", function(req, res) {
 })
 
 router.post("/test-post-3", function(req, res) {
-    // let id = req.body.user
-    // let pwd= req.body.password
+    let id = req.body.user
+    let pwd= req.body.password
 
-    // console.log( id , pwd)
+    console.log( id , pwd)
 
     console.log( req.body )
 
@@ -68,6 +139,50 @@ router.post("/test-post-4", function(req, res) {
     let ele= req.body.element
     arr.push(ele)
     res.send(  { msg: arr , status: true }  )
+     
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
