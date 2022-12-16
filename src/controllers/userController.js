@@ -1,4 +1,5 @@
 const UserModel= require("../models/userModel")
+//const bookSchema1 = require("../models/bookSchema.js")
 
 const createUser= async function (req, res) {
     let data= req.body
@@ -10,6 +11,8 @@ const getUsersData= async function (req, res) {
     let allUsers= await UserModel.find()
     res.send({msg: allUsers})
 }
+ 
+ 
+module.exports.createUser = createUser
+module.exports.getUsersData = getUsersData
 
-module.exports.createUser= createUser
-module.exports.getUsersData= getUsersData
