@@ -15,29 +15,6 @@ mongoose.connect("mongodb+srv://nishant55:1234@nishant99.et97kst.mongodb.net/tes
 .catch ( err => console.log(err) )
 
 
-app.use(
-        function(req,res,next){
-           let ip = req.ip
-           let url = req.originalUrl
-           let date = new Date()
-           let Dates = date.getDate()
-           let Months = date.getMonth()+1
-           let year =  date.getFullYear()
-           let hour = date.getHours()
-           let minute = date.getMinutes()
-           let second = date.getSeconds()
-           
-
-          console.log(Dates+"-"+Months+"-"+year+","+hour+":"+minute+":"+second)  
-          console.log(ip)     
-          console.log(url)     
-    
-     next()
-        }
-    );
-
-
-
  app.use('/', route);
 
 
