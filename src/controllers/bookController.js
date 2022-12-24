@@ -55,7 +55,7 @@ const getXINRBooks =async function(req,res){
 
 const getRandomBooks =async function(req,res){
 
-     let savedata =await bookModel.find({ $of:[ {stockAvailable:true}, {totalPages :{$gt : 500 } } ] })
+     let savedata =await bookModel.find({ $or:[ {stockAvailable:true}, {totalPages :{$gt : 500 } } ] })
      res.send({msg :savedata})
 
 }
