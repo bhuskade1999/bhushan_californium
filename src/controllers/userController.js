@@ -21,20 +21,17 @@ const loginUser = async function(req,res){
       res.send({ status: true, token: token });
 };
 
-/* ======================================================================== */
+/* ======================================================================================================== */
+
 
 const getUser = async function (req,res){ 
-   
 
- let userId = req.params.userId
-
+  let userId = req.params.userId
   let savedata =await userModel.findById(userId)
   if(!savedata){
   return res.send({status:false , msg:"User Not Found"})
-
  }
-
- res.send({msg : savedata})
+      res.send({msg : savedata})
 }
 
 
@@ -48,7 +45,7 @@ res.send({msg : savedata})
 
 }
 
-/* ======================================================================== */
+/* ====================================================================================================== */
 
 const deleteUser = async function(req,res){
   userId = req.params.userId
@@ -57,16 +54,11 @@ const deleteUser = async function(req,res){
 }
 
 
-/* ======================================================================== */
+/* ===================================================================================================================== */
 
-const fetchUser = async function (req,res){
+ 
 
-  savedata =await userModel.find()
-  res.send({msg :savedata})
-}
-
-
-module.exports.fetchUser = fetchUser
+//module.exports.fetchUser = fetchUser
  module.exports.deleteUser = deleteUser
 module.exports.updateUser = updateUser
 

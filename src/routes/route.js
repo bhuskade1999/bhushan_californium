@@ -13,14 +13,14 @@ router.post("/users", userController.createUsers  )
 router.post("/login", userController.loginUser)
 
 
-router.get("/getUser/:userId", MiddleWare.middle1, userController.getUser)
+router.get("/getUser/:userId", MiddleWare.middle1 , userController.getUser)
 
 
-router.put("/updateUser/:userId",MiddleWare.middle1, userController.updateUser)
-
- router.delete("/deleteUser/:userId" ,MiddleWare.middle1 ,userController.deleteUser)
+router.put("/updateUser/:userId", MiddleWare.middle1 ,userController.updateUser)
 
 
-//router.get("/fetchUser" ,userController.fetchUser)
+ router.delete("/deleteUser/:userId",MiddleWare.middle1 ,userController.deleteUser)
+
+ 
 
 module.exports = router;

@@ -1,19 +1,31 @@
-const jwt = require("jsonwebtoken");
+ const jwt = require("jsonwebtoken");
 
 
 const middle1 = function (req,res,next )
 {
+    userId = req.params.userId
+
     let tokens = req.headers["x-auth-token"]
      if(!tokens){
         return res.send({ status:false, msg : "headers is not  avalable" })
-     }else{
-        let decodedToken = jwt.verify(tokens, "functionup");
-        if(decodedToken){
-            next()
-        }else{
-            return res.send({status:false,msg:"token is invalid"})
-        }
      }
 
+    let decodedToken = jwt.verify(tokens, "functionup");
+        if(!decodedToken){
+            return res.send({status:false,msg:"token is invalid"})
+        }
+           
+    let tokenId = decodedToken.userId
+    if(tokenId !== userId){
+        return res.send({status:false, msg : "UserId Does Not Match With Token"})
+    }
+
+     next()
+         
 }
-module.exports.middle1 = middle1
+ 
+
+
+
+
+ module.exports.middle1 = middle1
